@@ -129,9 +129,9 @@
             "uid": "fe82tqceyn4e8c"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "subspace_established_connections{group=\"node\"}",
+          "expr": "subspace_established_connections{}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -430,16 +430,22 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
+            "mode": "thresholds"
           },
           "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 10
+              }
+            ]
+          },
           "unit": "binBps"
         },
         "overrides": []
@@ -452,15 +458,11 @@
       },
       "id": 14,
       "options": {
-        "displayLabels": [
-          "value"
-        ],
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "pieType": "pie",
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -468,10 +470,9 @@
           "fields": "",
           "values": false
         },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
       "pluginVersion": "11.4.0",
       "targets": [
@@ -481,8 +482,8 @@
             "uid": "fe82tqceyn4e8c"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "rate(substrate_sub_libp2p_network_bytes_total[1m])",
+          "editorMode": "code",
+          "expr": "rate(substrate_sub_libp2p_network_bytes_total[5m])",
           "fullMetaSearch": false,
           "includeNullMetadata": false,
           "instant": false,
@@ -494,7 +495,7 @@
         }
       ],
       "title": "Current P2P data rate",
-      "type": "piechart"
+      "type": "stat"
     },
     {
       "collapsed": false,
@@ -593,8 +594,8 @@
             "uid": "fe82tqceyn4e8c"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "subspace_farmer_subspace_established_connections{group=\"farmer\"}",
+          "editorMode": "code",
+          "expr": "subspace_farmer_subspace_established_connections{}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -1929,13 +1930,13 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "Subspace-new",
   "uid": "bdbz3s3a4ho1sb21",
-  "version": 2,
+  "version": 4,
   "weekStart": ""
 }
