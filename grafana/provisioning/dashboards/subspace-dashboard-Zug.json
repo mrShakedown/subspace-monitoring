@@ -846,7 +846,7 @@
             "uid": "fe82tqceyn4e8c"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
           "expr": "rate(substrate_sub_libp2p_network_bytes_total[5m])",
           "fullMetaSearch": false,
@@ -2347,7 +2347,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -2362,7 +2363,7 @@
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 125
+            "y": 55
           },
           "id": 21,
           "options": {
@@ -2518,11 +2519,16 @@
       "pluginVersion": "11.4.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "fe82tqceyn4e8c"
+          },
           "editorMode": "code",
-          "expr": "logs_node_warn{}",
+          "expr": "rate(logs_node_warn_cnt[5m])",
+          "hide": false,
           "legendFormat": "__auto",
           "range": true,
-          "refId": "A"
+          "refId": "B"
         }
       ],
       "title": "NODE warn in logs",
@@ -2610,14 +2616,19 @@
       "pluginVersion": "11.4.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "fe82tqceyn4e8c"
+          },
           "editorMode": "code",
-          "expr": "logs_node_error{}",
+          "expr": "rate(logs_node_error_cnt[5m])",
+          "hide": false,
           "legendFormat": "__auto",
           "range": true,
-          "refId": "A"
+          "refId": "B"
         }
       ],
-      "title": "NODE cnt warn in logs",
+      "title": "NODE error in logs",
       "type": "timeseries"
     },
     {
@@ -2676,7 +2687,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "s"
         },
         "overrides": []
       },
@@ -2775,8 +2787,8 @@
       "gridPos": {
         "h": 8,
         "w": 2,
-        "x": 0,
-        "y": 64
+        "x": 8,
+        "y": 56
       },
       "id": 29,
       "options": {
@@ -2794,14 +2806,19 @@
       "pluginVersion": "11.4.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "fe82tqceyn4e8c"
+          },
           "editorMode": "code",
-          "expr": "logs_node_warn{}",
+          "expr": "rate(farmer_node_warn_cnt[5m])",
+          "hide": false,
           "legendFormat": "__auto",
           "range": true,
-          "refId": "A"
+          "refId": "B"
         }
       ],
-      "title": "NODE warn in logs",
+      "title": "FARMER warn in logs",
       "type": "timeseries"
     },
     {
@@ -2867,8 +2884,8 @@
       "gridPos": {
         "h": 8,
         "w": 2,
-        "x": 2,
-        "y": 64
+        "x": 10,
+        "y": 56
       },
       "id": 28,
       "options": {
@@ -2886,11 +2903,16 @@
       "pluginVersion": "11.4.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "fe82tqceyn4e8c"
+          },
           "editorMode": "code",
-          "expr": "logs_farmer_error{}",
+          "expr": "rate(logs_farmer_error_cnt[5m])",
+          "hide": false,
           "legendFormat": "__auto",
           "range": true,
-          "refId": "A"
+          "refId": "B"
         }
       ],
       "title": "FARMER error in logs",
@@ -2952,20 +2974,23 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "clocks"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 8,
         "w": 2,
-        "x": 4,
-        "y": 64
+        "x": 12,
+        "y": 56
       },
       "id": 31,
       "options": {
         "legend": {
-          "calcs": [],
+          "calcs": [
+            "lastNotNull"
+          ],
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": true
@@ -3049,6 +3074,6 @@
   "timezone": "browser",
   "title": "Subspace-new",
   "uid": "bdbz3s3a4ho1sb21",
-  "version": 18,
+  "version": 20,
   "weekStart": ""
 }
